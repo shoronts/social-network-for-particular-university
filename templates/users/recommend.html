@@ -1,0 +1,517 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Recommend To Student{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/recommend.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container container1">
+    <h1 class="text-center text-center1">Academic Recommendation</h1>
+    <h2 class="text-center text-center2"><u>To be completed by the applicant</u></h2>
+
+    <div class="recommendForm">
+        <form action="{% url 'recommend' %}" method="POST">
+            {% csrf_token %}
+            <div class="inpForm">
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Student</label>
+                    <select name="full_name" class="form-control">
+                        {% for student in allstudent %}
+                        <option value="{{ student.user.username }}">{{ student.user.first_name }} {{ student.user.last_name }}</option>
+                        {% endfor %}
+                      </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">University of Graduation</label>
+                    <input type="text" required name="university_of_graduation" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Department & Major</label>
+                    <input type="text" required name="department_and_major" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Graduation's Degree</label>
+                    <input type="text" required name="graduations_degree" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Grade & GPA</label>
+                    <input type="text" required name="grade_and_gpa" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Studies student wishes to pursue</label>
+                    <input type="text" required name="studies_student_wishes_to_pursue" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Specialization in higher studies</label>
+                    <input type="text" required name="specialization_in_higher_studies" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Mobile Number</label>
+                    <input type="text" required name="mobile_number" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Email</label>
+                    <input type="email" required name="email" class="form-control">
+                </div>
+
+            </div>
+            <div class="recommendForm">
+                <div class="inpForm1">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Unable to Access</th>
+                                <th>Below Avg.</th>
+                                <th>Average</th>
+                                <th>Above Avg</th>
+                                <th>Superior</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Academic Excellence
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron" value="Assets."> Assets.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron" value="Below Avg."> Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron" value="Avg."> Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron" value="Above Avg."> Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron" value="Superior."> Superior.
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Initiavive & Motivation
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron1" value="Assets"> Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron1" value="Below Avg."> Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron1" value="Avg."> Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron1" value="Above Avg."> Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron1" value="Superior"> Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Expreeing Ideas
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron2" value="Assets"> Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron2" value="Below Avg."> Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron2" value="Avg."> Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron2" value="Above Avg."> Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron2" value="Superior"> Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Critical Thinking
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron3" value="Assets"> Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron3" value="Below Avg."> Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron3" value="Avg."> Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron3" value="Above Avg."> Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron3" value="Superior"> Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Ability to Accept & Utilize Criticism
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron4" value="Assets"> Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron4" value="Below Avg."> Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron4" value="Avg."> Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron4" value="Above Avg."> Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron4" value="Superior"> Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Self-confidence & Responsibility
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron5" value="Assets"> Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron5" value="Below Avg."> Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron5" value="Avg."> Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron5" value="Above Avg."> Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron5" value="Superior"> Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Ability to Plan & Execute Research
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron6" value="Assets"> Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron6" value="Below Avg."> Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron6" value="Avg."> Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron6" value="Above Avg."> Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron6" value="Superior"> Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Acquiring Research Technique
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron7" value="Assets"> Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron7" value="Below Avg."> Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron7" value="Avg."> Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron7" value="Above Avg."> Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron7" value="Superior"> Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Creative & Originality
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron8" value="Assets"> Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron8" value="Below Avg."> Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron8" value="Avg."> Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron8" value="Above Avg."> Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron8" value="Superior"> Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Linguistic Ikills
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron9" value="Assets"> Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron9" value="Below Avg."> Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron9" value="Avg."> Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron9" value="Above Avg."> Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron9" value="Superior"> Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    General Knowledge
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron10" value="Assets"> Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron10" value="Below Avg."> Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron10" value="Avg."> Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron10" value="Above Avg."> Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron10" value="Superior"> Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Overall Evaluation
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron11" value="Assets"> Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron11" value="Below Avg."> Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron11" value="Avg."> Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron11" value="Above Avg."> Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        <input type="radio" required name="shoron11" value="Superior"> Superior
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="form-group1">
+                        <label>Note About The Applicant:</label>
+                        <textarea name="shoron12" cols="30" rows="5" required class="form-control"></textarea>
+                    </div>
+                    <br>
+                </div>
+
+                <div class="inpForm">
+                    <h3 class="text-center">Faculty Dean</h3>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Name</label>
+                        <input type="text" required name="faculty_dean_name" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Signature</label>
+                        <input type="text" required name="faculty_dean_signature" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Date</label>
+                        <input type="datetime-local" required name="faculty_dean_date" class="form-control">
+                    </div>
+
+                </div>
+
+                <div class="inpForm">
+                    <h3 class="text-center">Recommender's</h3>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Recommender's Name</label>
+                        <input type="text" required name="recommenders_name" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Academic Position</label>
+                        <input type="text" required name="academic_position" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Academic Department</label>
+                        <input type="text" required name="academic_department" class="form-control">
+                    </div>
+
+                </div>
+
+                <div class="text-center" style="margin-top: 20px;">
+                    <input type="submit" value="send" class="btn btn-default" />
+                    <!-- <button type="button" class="btn btn-default" onclick="print()"> print</button> -->
+                </div>
+            </div>
+        </form>
+    </div>
+    {% endblock %}

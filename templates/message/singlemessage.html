@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Message with {{ slug }} {% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/message.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container container1">
+    <div class="row">
+        <div class="col-md-4 allusers">
+            <input  type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+            <ul id="myUL">
+                {% for users in allusers %}
+                <li><a href="{% url 'message' %}{{users.username}}">{{ users.username }}</a></li>
+                {% endfor %}
+              </ul>
+        </div>
+        <div class="col-md-8 allusers1">
+            {% for allmessage in alltextmessage %}
+            {% if allmessage.user1 == slug and allmessage.user == user.username %}
+            <div class="umessage">
+                {% if allmessage.user1 == slug and allmessage.message1 is not none %}
+                <p>{{ allmessage.message1 }}</p>
+                <p>send by: {{ allmessage.user1 }}</p>
+                <p>Date: {{ allmessage.current_date }}</p>
+                {%  endif %}
+            </div>
+            <div id="umessage1">
+                <div style="width: 300px;">
+                    {% if allmessage.user == user.username %}
+                    <p>{{ allmessage.message }}</p>
+                    <p>send by: {{ allmessage.user }}</p>
+                    <p>Date: {{ allmessage.current_date }}</p>
+                    {%  endif %}
+                </div>
+            </div>
+            {% elif allmessage.user1 == user.username and allmessage.user == slug %}
+            <div class="umessage">
+                {% if allmessage.user1 == user.username %}
+                <p>{{ allmessage.message }}</p>
+                <p>send by: {{ allmessage.user }}</p>
+                <p>Date: {{ allmessage.current_date }}</p>
+                {%  endif %}
+            </div>
+            <div id="umessage1">
+                <div style="width: 300px;">
+                    {% if allmessage.user == slug and allmessage.message1 is not none %}
+                    <p>{{ allmessage.message1 }}</p>
+                    <p>send by: {{ allmessage.user1 }}</p>
+                    <p>Date: {{ allmessage.current_date }}</p>
+                    {%  endif %}
+                </div>
+            </div>
+
+            {% endif %}
+            {% endfor %}
+            <form class="message" action="{% url 'message' %}{{slug}}" method="post">
+                {% csrf_token %}
+                <textarea name="message" cols="10" rows="5" class="form-control"></textarea>
+                <div class="text-center" style="margin-top: 10px;">
+                    <input type="submit" value="send" class="btn btn-default">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+    function myFunction() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+    </script>
+    {% endblock %}

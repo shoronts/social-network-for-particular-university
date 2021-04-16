@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Recommend List{% endblock %}
+{% block css %}
+
+{% endblock %}
+{% block content %}
+{% if user.allusersinfo.is_teacher %}
+<div class="container">
+    <h2 style="margin-top: 50px;">Recommendation List</h2>
+
+    {% for message in messages %}
+    <p class="text-center" style="color: green; font-weight: 800;">{{ message }}</p>
+    {% endfor %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>No:</th>
+                <th>Date</th>
+                <th>Student</th>
+                <th>Edit / Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for recommend in allrecommend %}
+            <tr>
+                <td>{{ forloop.counter }} </td>
+                <td>{{ recommend.current_date }}</td>
+                <td>{{ recommend.full_name }}</td>
+                <td><a href="{% url 'recommendlistedit' slug=recommend.slug %}">Edit</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="{% url 'recommendlistdelete' slug=recommend.slug %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% if user.allusersinfo.is_student %}
+<div class="container">
+    <h2 style="margin-top: 50px;">Recommendation List</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>No:</th>
+                <th>Date</th>
+                <th>Student</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for recommend in allrecommend %}
+            {% if recommend.user == user.username %}
+            <tr>
+                <td>{{ forloop.counter }} </td>
+                <td>{{ recommend.current_date }}</td>
+                <td>{{ recommend.full_name }}</td>
+                <td><a target="_blank" href="{% url 'recommendpdf' slug=recommend.slug %}">View</a></td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock %}

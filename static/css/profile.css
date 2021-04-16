@@ -1,0 +1,15 @@
+form{
+    margin-top: 50px;
+}
+.form-group{
+    display: flex;
+    align-items: center;
+    width: 400px;
+    margin: 10px auto;
+}
+.form-group label{
+    width: 200px;
+}
+.text-upparcase{
+    text-transform: uppercase;
+}

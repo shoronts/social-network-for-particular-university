@@ -1,0 +1,54 @@
+.regTitle {
+    margin-top: 50px;
+}
+
+.regTitle h1 {
+    text-align: center;
+}
+
+.chooseBtn {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.chooseBtn button:focus {
+    outline: none !important;
+}
+
+.comRegForm {
+    margin: 0 auto;
+}
+
+.comRegForm h1 {
+    margin: 50px 0;
+    text-align: center;
+}
+
+.comRegFormRow {
+    display: flex;
+    justify-content: space-around;
+}
+
+.comRegFormRow input {
+    width: 280px !important;
+}
+.cusBtn{
+    margin-top: 25px;
+}
+.cusBtn:focus{
+    outline: none;
+}
+.errorlist{
+    margin: 0;
+    padding: 0;
+}
+.errorlist li{
+    list-style: none;
+    color: red;
+}
+/* Mobile Code */
+@media all and (max-width:767px) {
+    .comRegFormRow {
+        flex-wrap: wrap;
+    }
+}

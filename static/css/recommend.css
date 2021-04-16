@@ -1,0 +1,46 @@
+.container1{
+    margin-top: 50px;
+}
+.text-center1{
+    border: 2px solid #77B325;
+    padding: 10px;
+    text-transform: uppercase;
+}
+.text-center2{
+    margin-top: 50px;
+    color: #77B325;
+    text-transform: capitalize;
+}
+.inpForm{
+    border: 2px solid #77B325;
+    margin: 100px 0;
+    padding: 20px 0;
+
+}
+.recommendForm{
+    margin-top: 100px;
+}
+.recommendForm form .form-group{
+    width: 600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.recommendForm form label{
+    width: 500px;
+}
+.inpForm1{
+    background-color: #77B325;
+    color: #ffffff;
+}
+.inpRad{
+    cursor: pointer;
+    width: 140px!important;
+}
+.form-group1{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}

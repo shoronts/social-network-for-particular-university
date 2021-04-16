@@ -1,0 +1,78 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/* Header and footer */
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #fff;
+}
+
+.navbar-inverse, footer {
+    background-color: #77b300;
+}
+
+.navbar-inverse .navbar-brand {
+    height: 60px;
+    width: 60px;
+}
+
+.navbar-inverse .navbar-brand img {
+    height: 100%;
+    width: 100%;
+}
+
+.navbar-brand {
+    padding: 0!important;
+}
+
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+    margin-top: 5px;
+}
+.footerval {
+    padding-top: 10px;
+    width: 650px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+.footerval a, .footerval p{
+    text-decoration: none;
+    color: #fff;
+}
+footer{
+    margin-top: 50px;
+}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Register{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="regTitle">
+        <h1>Choose who you are to Register</h1>
+    </div>
+
+    <div class="chooseBtn">
+        <a href="{% url 'teacherregister' %}"><button class="btn btn-default">Teacher</button></a>
+        <a href="{% url 'studentregister' %}"><button class="btn btn-default">Student</button></a>
+        <a href="{% url 'companyregister' %}"><button class="btn btn-default">Company</button></a>
+    </div>
+</div>
+{% endblock %}

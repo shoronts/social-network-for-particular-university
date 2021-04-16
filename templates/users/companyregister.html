@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Company Registration{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+{% block content %}
+<!-- Company Registration -->
+<div class="comRegForm">
+    <div class="container">
+        <h1>Company Registration</h1>
+        <form action="{% url 'companyregister' %}" method="post" class="form-horizontal" novalidate>
+            {% csrf_token %}
+            {{ form.nonefield_errors }}
+            <div class="comRegFormRow">
+                <div class="comRegFormLeft">
+                    <div class="form-group">
+                        <label>{{ form.first_name.label }}</label>
+                        {{ form.first_name }}
+                        <small class="form-text text-muted">{{ form.first_name.errors }}</small>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ form.last_name.label }}</label>
+                        {{ form.last_name }}
+                        <small class="form-text text-muted">{{ form.last_name.errors }}</small>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ form.id_number.label }}</label>
+                        {{ form.id_number }}
+                        <small class="form-text text-muted">{{ form.id_number.errors }}</small>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ form.email.label }}</label>
+                        {{ form.email }}
+                        <small class="form-text text-muted">{{ form.email.errors }}</small>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ form.phone_number.label }}</label>
+                        {{ form.phone_number }}
+                        <small class="form-text text-muted">{{ form.phone_number.errors }}</small>
+                    </div>
+                </div>
+
+                <div class="comRegFormRight">
+                    <div class="form-group">
+                        <label>{{ form.specialization.label }}</label>
+                        {{ form.specialization }}
+                        <small class="form-text text-muted">{{ form.specialization.errors }}</small>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ form.company_size.label }}</label>
+                        {{ form.company_size }}
+                        <small class="form-text text-muted">{{ form.company_size.errors }}</small>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ form.username.label }}</label>
+                        {{ form.username }}
+                        <small class="form-text text-muted">{{ form.username.errors }}</small>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ form.password.label }}</label>
+                        {{ form.password }}
+                        <small class="form-text text-muted">{{ form.password.errors }}</small>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ form.confirm_password.label }}</label>
+                        {{ form.confirm_password }}
+                        <small class="form-text text-muted">{{ form.confirm_password.errors }}</small>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="form-group">
+                    <input type="submit" value="Register" class="btn btn-default cusBtn" />
+                </div>
+                <p class="text-center">
+                    already have an account? please <a href="{% url 'login' %}">login</a>.
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

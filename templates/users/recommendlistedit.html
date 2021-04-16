@@ -1,0 +1,753 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Recommend To {{ allrecommend.full_name }}{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/recommend.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container container1">
+    <h1 class="text-center text-center1">Academic Recommendation</h1>
+    <h2 class="text-center text-center2"><u>To be completed by the applicant</u></h2>
+
+    {% for message in messages %}
+    <p class="text-center" style="color: green; font-weight: 800;">{{ message }}</p>
+    {% endfor %}
+    <div class="recommendForm">
+        <form action="{% url 'recommendlistedit' slug=allrecommend.slug %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="user" value="{{ allrecommend.user }}">
+            <div class="inpForm">
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Full Name</label>
+                    <input type="text" required name="full_name" value="{{ allrecommend.full_name }}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">University of Graduation</label>
+                    <input type="text" required name="university_of_graduation" value="{{ allrecommend.university_of_graduation }}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Department & Major</label>
+                    <input type="text" required name="department_and_major" value="{{ allrecommend.department_and_major }}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Graduation's Degree</label>
+                    <input type="text" required name="graduations_degree" class="form-control" value="{{ allrecommend.graduations_degree }}">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Grade & GPA</label>
+                    <input type="text" required name="grade_and_gpa" class="form-control" value="{{ allrecommend.grade_and_gpa }}">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Studies student wishes to pursue</label>
+                    <input type="text" required name="studies_student_wishes_to_pursue" class="form-control" value="{{ allrecommend.studies_student_wishes_to_pursue }}">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Specialization in higher studies</label>
+                    <input type="text" required name="specialization_in_higher_studies" class="form-control" value="{{ allrecommend.specialization_in_higher_studies }}">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Mobile Number</label>
+                    <input type="text" required name="mobile_number" class="form-control" value="{{ allrecommend.mobile_number }}">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Email</label>
+                    <input type="email" required name="email" class="form-control" value="{{ allrecommend.email }}">
+                </div>
+
+            </div>
+            <div class="recommendForm">
+                <div class="inpForm1">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Unable to Access</th>
+                                <th>Below Avg.</th>
+                                <th>Average</th>
+                                <th>Above Avg</th>
+                                <th>Superior</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    Academic Excellence
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.academic_excellence == 'Assets.' %}
+                                        <input type="radio" checked name="shoron" value="Assets.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron" value="Assets.">
+                                        {% endif %} Assets.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.academic_excellence == 'Below Avg.' %}
+                                        <input type="radio" checked name="shoron" value="Below Avg."> 
+                                        {% else %}
+                                        <input type="radio" required name="shoron" value="Below Avg.">                                         
+                                        {% endif %}Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.academic_excellence == 'Avg.' %}
+                                        <input type="radio" checked name="shoron" value="Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron" value="Avg.">                            
+                                        {% endif %} Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.academic_excellence == 'Above Avg.' %}
+                                        <input type="radio" checked name="shoron" value="Above Avg."> 
+                                        {% else %}
+                                        <input type="radio" required name="shoron" value="Above Avg."> 
+                                        {% endif %}Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.academic_excellence == 'Superior.' %}
+                                        <input type="radio" checked name="shoron" value="Superior."> 
+                                        {% else %}
+                                        <input type="radio" required name="shoron" value="Superior."> 
+                                        {% endif %}Superior.
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Initiavive & Motivation
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.initiavive_and_motivation == 'Assets' %}
+                                        <input type="radio" checked name="shoron1" value="Assets">
+                                        {% else %}
+                                        <input type="radio" required name="shoron1" value="Assets"> {% endif %}Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.initiavive_and_motivation == 'Below Avg.' %}
+                                        <input type="radio" checked name="shoron1" value="Below Avg."> 
+                                        {% else %}
+                                        <input type="radio" required name="shoron1" value="Below Avg."> 
+                                        {% endif %}Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.initiavive_and_motivation == 'Avg.' %}
+                                        <input type="radio" checked name="shoron1" value="Avg."> 
+                                        {% else %}
+                                        <input type="radio" required name="shoron1" value="Avg."> {% endif %}Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.initiavive_and_motivation == 'Above Avg.' %}
+                                        <input type="radio" checked name="shoron1" value="Above Avg.">
+                                        {% else %}<input type="radio" required name="shoron1" value="Above Avg.">
+                                        {% endif %} Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.initiavive_and_motivation == 'Superior' %}
+                                        <input type="radio" checked name="shoron1" value="Superior">
+                                        {% else %}
+                                        <input type="radio" required name="shoron1" value="Superior">
+                                        {% endif %} Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Expreeing Ideas
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.expreeing_ideas == 'Assets' %}
+                                        <input type="radio" checked name="shoron2" value="Assets"> 
+                                        {% else %}
+                                        <input type="radio" required name="shoron2" value="Assets"> {% endif %}Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.expreeing_ideas == 'Below Avg.' %}
+                                        <input type="radio" checked name="shoron2" value="Below Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron2" value="Below Avg.">
+                                        {% endif %} Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.expreeing_ideas == 'Avg.' %}
+                                        <input type="radio" checked name="shoron2" value="Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron2" value="Avg.">
+                                        {% endif %} Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.expreeing_ideas == 'Above Avg.' %}
+                                        <input type="radio" checked name="shoron2" value="Above Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron2" value="Above Avg.">
+                                        {% endif %} Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.expreeing_ideas == 'Superior' %}
+                                        <input type="radio" checked name="shoron2" value="Superior">
+                                        {% else %}
+                                        <input type="radio" required name="shoron2" value="Superior">
+                                        {% endif %} Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+<!-- Lets start again -->
+                            <tr>
+                                <td>
+                                    Critical Thinking
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.critical_thinking == 'Assets' %}
+                                        <input type="radio" checked name="shoron3" value="Assets">
+                                        {% else %}
+                                        <input type="radio" required name="shoron3" value="Assets">
+                                        {% endif %} Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.critical_thinking == 'Below Avg.' %}
+                                        <input type="radio" checked name="shoron3" value="Below Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron3" value="Below Avg."> 
+                                        {% endif %} Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.critical_thinking == 'Avg.' %}
+                                        <input type="radio" checked name="shoron3" value="Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron3" value="Avg."> 
+                                        {% endif %} Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.critical_thinking == 'Above Avg.' %}
+                                        <input type="radio" checked name="shoron3" value="Above Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron3" value="Above Avg.">
+                                        {% endif %} Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.critical_thinking == 'Superior' %}
+                                        <input type="radio" checked name="shoron3" value="Superior">
+                                        {% else %}
+                                        <input type="radio" required name="shoron3" value="Superior">
+                                        {% endif %} Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Ability to Accept & Utilize Criticism
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.ability_to_accept_and_utilize_criticism == 'Assets' %}
+                                        <input type="radio" checked name="shoron4" value="Assets">
+                                        {% else %}
+                                        <input type="radio" required name="shoron4" value="Assets">
+                                        {% endif %}  Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.ability_to_accept_and_utilize_criticism == 'Below Avg.' %}
+                                        <input type="radio" checked name="shoron4" value="Below Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron4" value="Below Avg.">
+                                        {% endif %} Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.ability_to_accept_and_utilize_criticism == 'Avg.' %}
+                                        <input type="radio" checked name="shoron4" value="Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron4" value="Avg."> 
+                                        {% endif %} Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.ability_to_accept_and_utilize_criticism == 'Above Avg.' %}
+                                        <input type="radio" checked name="shoron4" value="Above Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron4" value="Above Avg.">
+                                        {% endif %} Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.ability_to_accept_and_utilize_criticism == 'Superior' %}
+                                        <input type="radio" checked name="shoron4" value="Superior">
+                                        {% else %}
+                                        <input type="radio" required name="shoron4" value="Superior">
+                                        {% endif %} Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Self-confidence & Responsibility
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.self_confidence_and_responsibility == 'Assets' %}
+                                        <input type="radio" checked name="shoron5" value="Assets">
+                                        {% else %}
+                                        <input type="radio" required name="shoron5" value="Assets"> 
+                                        {% endif %} Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.self_confidence_and_responsibility == 'Below Avg.' %}
+                                        <input type="radio" checked name="shoron5" value="Below Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron5" value="Below Avg.">
+                                        {% endif %} Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.self_confidence_and_responsibility == 'Avg.' %}
+                                        <input type="radio" checked name="shoron5" value="Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron5" value="Avg.">
+                                        {% endif %}  Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.self_confidence_and_responsibility == 'Above Avg.' %}
+                                        <input type="radio" checked name="shoron5" value="Above Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron5" value="Above Avg.">
+                                        {% endif %} Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.self_confidence_and_responsibility == 'Superior' %}
+                                        <input type="radio" checked name="shoron5" value="Superior">
+                                        {% else %}
+                                        <input type="radio" required name="shoron5" value="Superior">
+                                        {% endif %} Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Ability to Plan & Execute Research
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.ability_to_plan_and_execute_research == 'Assets' %}
+                                        <input type="radio" checked name="shoron6" value="Assets">
+                                        {% else %}
+                                        <input type="radio" required name="shoron6" value="Assets">
+                                        {% endif %} Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.ability_to_plan_and_execute_research == 'Below Avg.' %}
+                                        <input type="radio" checked name="shoron6" value="Below Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron6" value="Below Avg.">
+                                        {% endif %} Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.ability_to_plan_and_execute_research == 'Avg.' %}
+                                        <input type="radio" checked name="shoron6" value="Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron6" value="Avg."> 
+                                        {% endif %} Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.ability_to_plan_and_execute_research == 'Above Avg.' %}
+                                        <input type="radio" required name="shoron6" value="Above Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron6" value="Above Avg.">
+                                        {% endif %}  Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.ability_to_plan_and_execute_research == 'Superior' %}
+                                        <input type="radio" checked name="shoron6" value="Superior">
+                                        {% else %}
+                                        <input type="radio" required name="shoron6" value="Superior">
+                                        {% endif %} Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Acquiring Research Technique
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.acquiring_research_technique == 'Assets' %}
+                                        <input type="radio" checked name="shoron7" value="Assets">
+                                        {% else %}
+                                        <input type="radio" required name="shoron7" value="Assets">
+                                        {% endif %}  Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.acquiring_research_technique == 'Below Avg.' %}
+                                        <input type="radio" checked name="shoron7" value="Below Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron7" value="Below Avg.">
+                                        {% endif %} Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.acquiring_research_technique == 'Avg.' %}
+                                        <input type="radio" checked name="shoron7" value="Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron7" value="Avg.">
+                                        {% endif %}  Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.acquiring_research_technique == 'Above Avg.' %}
+                                        <input type="radio" checked name="shoron7" value="Above Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron7" value="Above Avg.">
+                                        {% endif %} Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.acquiring_research_technique == 'Superior' %}
+                                        <input type="radio" checked name="shoron7" value="Superior">
+                                        {% else %}
+                                        <input type="radio" required name="shoron7" value="Superior">
+                                        {% endif %} Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Creative & Originality
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.creative_and_originality == 'Assets' %}
+                                        <input type="radio" checked name="shoron8" value="Assets">
+                                        {% else %}
+                                        <input type="radio" required name="shoron8" value="Assets">
+                                        {% endif %}  Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.creative_and_originality == 'Below Avg.' %}
+                                        <input type="radio" checked name="shoron8" value="Below Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron8" value="Below Avg.">
+                                        {% endif %} Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.creative_and_originality == 'Avg.' %}
+                                        <input type="radio" checked name="shoron8" value="Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron8" value="Avg.">
+                                        {% endif %}  Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.creative_and_originality == 'Above Avg.' %}
+                                        <input type="radio" checked name="shoron8" value="Above Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron8" value="Above Avg.">
+                                        {% endif %} Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.creative_and_originality == 'Superior' %}
+                                        <input type="radio" checked name="shoron8" value="Superior">
+                                        {% else %}
+                                        <input type="radio" required name="shoron8" value="Superior">
+                                        {% endif %} Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Linguistic Ikills
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.linguistic_ikills == 'Assets' %}
+                                        <input type="radio" checked name="shoron9" value="Assets">
+                                        {% else %}
+                                        <input type="radio" required name="shoron9" value="Assets">
+                                        {% endif %}  Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.linguistic_ikills == 'Below Avg.' %}
+                                        <input type="radio" checked name="shoron9" value="Below Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron9" value="Below Avg.">
+                                        {% endif %} Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.linguistic_ikills == 'Avg.' %}
+                                        <input type="radio" checked name="shoron9" value="Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron9" value="Avg.">
+                                        {% endif %}  Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.linguistic_ikills == 'Above Avg.' %}
+                                        <input type="radio" checked name="shoron9" value="Above Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron9" value="Above Avg.">
+                                        {% endif %} Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.linguistic_ikills == 'Superior' %}
+                                        <input type="radio" checked name="shoron9" value="Superior">
+                                        {% else %}
+                                        <input type="radio" required name="shoron9" value="Superior">
+                                        {% endif %} Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    General Knowledge
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.general_knowledge == 'Assets' %}
+                                        <input type="radio" checked name="shoron10" value="Assets">
+                                        {% else %}
+                                        <input type="radio" required name="shoron10" value="Assets">
+                                        {% endif %} Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.general_knowledge == 'Below Avg.' %}
+                                        <input type="radio" checked name="shoron10" value="Below Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron10" value="Below Avg.">
+                                        {% endif %} Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.general_knowledge == 'Avg.' %}
+                                        <input type="radio" checked name="shoron10" value="Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron10" value="Avg.">
+                                        {% endif %}  Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.general_knowledge == 'Above Avg.' %}
+                                        <input type="radio" checked name="shoron10" value="Above Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron10" value="Above Avg.">
+                                        {% endif %} Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.general_knowledge == 'Superior' %}
+                                        <input type="radio" checked name="shoron10" value="Superior">
+                                        {% else %}
+                                        <input type="radio" required name="shoron10" value="Superior">
+                                        {% endif %} Superior
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    Overall Evaluation
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.overall_evaluation == 'Assets' %}
+                                        <input type="radio" checked name="shoron11" value="Assets">
+                                        {% else %}
+                                        <input type="radio" required name="shoron11" value="Assets">
+                                        {% endif %} Assets
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.overall_evaluation == 'Below Avg.' %}
+                                        <input type="radio" checked name="shoron11" value="Below Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron11" value="Below Avg.">
+                                        {% endif %} Below Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.overall_evaluation == 'Avg.' %}
+                                        <input type="radio" checked name="shoron11" value="Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron11" value="Avg.">
+                                        {% endif %}  Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.overall_evaluation == 'Above Avg.' %}
+                                        <input type="radio" checked name="shoron11" value="Above Avg.">
+                                        {% else %}
+                                        <input type="radio" required name="shoron11" value="Above Avg.">
+                                        {% endif %} Above Avg.
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="inpRad">
+                                        {% if allrecommend.overall_evaluation == 'Superior' %}
+                                        <input type="radio" checked name="shoron11" value="Superior">
+                                        {% else %}
+                                        <input type="radio" required name="shoron11" value="Superior">
+                                        {% endif %} Superior
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="form-group1">
+                        <label>Note About The Applicant:</label>
+                        <textarea name="shoron12" cols="30" rows="5" required class="form-control">{{ allrecommend.note_about_the_applicant }}</textarea>
+                    </div>
+                    <br>
+                </div>
+
+                <div class="inpForm">
+                    <h3 class="text-center">Faculty Dean</h3>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Name</label>
+                        <input type="text" required name="faculty_dean_name" class="form-control" value="{{ allrecommend.faculty_dean_name }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Signature</label>
+                        <input type="text" required name="faculty_dean_signature" class="form-control" value="{{ allrecommend.faculty_dean_signature }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Date</label>
+                        <input type="datetime-local" required name="faculty_dean_date" class="form-control" value="{{ allrecommend.faculty_dean_date }}">
+                    </div>
+
+                </div>
+
+                <div class="inpForm">
+                    <h3 class="text-center">Recommender's</h3>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Recommender's Name</label>
+                        <input type="text" required name="recommenders_name" class="form-control" value="{{ allrecommend.recommenders_name }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Academic Position</label>
+                        <input type="text" required name="academic_position" class="form-control" value="{{ allrecommend.academic_position }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Academic Department</label>
+                        <input type="text" required name="academic_department" class="form-control" value="{{ allrecommend.academic_department }}">
+                    </div>
+
+                </div>
+
+                <div class="text-center" style="margin-top: 20px;">
+                    <input type="submit" value="Edit" class="btn btn-default" />
+                </div>
+            </div>
+        </form>
+    </div>
+    {% endblock %}

@@ -1,0 +1,28 @@
+.shareHome{
+    display: flex;
+    justify-content: center;
+}
+textarea {
+  width: 600px!important;
+  height: 200px!important;
+}
+
+.homebox{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.card{
+    width: 370px;
+    min-height: 200px;
+    max-height: 370px;
+    border: 1px solid #77B325;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.card p{
+    text-align: justify;
+}

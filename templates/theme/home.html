@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    {% if user.is_authenticated %}
+    <h1 class="text-center" style="margin-top: 100px;">Share your ideas, information, and experience...</h1>
+    {% for message in messages %}
+    <p class="text-center" style="color: green; font-weight: 800;">{{ message }}</p>
+    {% endfor %}
+    <div class="shareHome">
+        <form action="{% url 'home' %}" method="POST" style="margin-top: 30px;">
+            {% csrf_token %}
+            <div class="form-group">
+                <textarea name="comment" rows="6" cols="150"
+                    class="form-control">Share your ideas, information, and experience...</textarea>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-default">SUBMIT</button>
+            </div>
+        </form>
+    </div>
+    {% else %}
+    {% endif %}
+    <div class="homebox text-center">
+        {% for comment in allcomment %}
+        <div class="card">
+            <p>{{ comment.comment }}</p>
+            <h4 class="text-center">{{ comment.first_name }} {{ comment.last_name }}</h4>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

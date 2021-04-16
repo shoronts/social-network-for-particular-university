@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendation form</title>
+</head>
+
+<body>
+    <section style="text-align: center;">
+        <h1 style="border: 1px solid #77B325; padding-top: 10px;">ACADEMIC RECOMMENDATION</h1>
+    </section>
+<hr>
+    <section style="margin-top: 50px;">
+        <h3 style="text-align: center;">Student Info</h3>
+        <p>Student Name : {{ recommenddata.full_name }}</p>
+        <p>University of Graduation : {{ recommenddata.university_of_graduation }}</p>
+        <p>Department & Major : {{ recommenddata.department_and_major }}</p>
+        <p>Graduation's Degree : {{ recommenddata.graduations_degree }}</p>
+        <p>Grade & GPA : {{ recommenddata.grade_and_gpa }}</p>
+        <p>Studies student wishes to pursue : {{ recommenddata.studies_student_wishes_to_pursue }}</p>
+        <p>Specialization in higher studies : {{ recommenddata.specialization_in_higher_studies }}</p>
+        <p>Mobile Number : {{ recommenddata.mobile_number }}</p>
+        <p>Email : {{ recommenddata.email }}</p>
+    </section>
+<hr>
+    <section class="thirdSec">
+        <h3 style="text-align: center;">Other Info</h3>
+        <p>Academic Excellence : {{ recommenddata.academic_excellence }}</p>
+
+        <p>Initiavive & Motivation : {{ recommenddata.initiavive_and_motivation }}</p>
+
+        <p>Expreeing Ideas : {{ recommenddata.expreeing_ideas }}</p>
+
+        <p>Critical Thinking : {{ recommenddata.critical_thinking }}</p>
+
+        <p>Ability to Accept & Utilize Criticism : {{ recommenddata.ability_to_accept_and_utilize_criticism }}</p>
+
+        <p>Self-confidence & Responsibility : {{ recommenddata.self_confidence_and_responsibility }}</p>
+
+        <p>Ability to Plan & Execute Research : {{ recommenddata.ability_to_plan_and_execute_research }}</p>
+
+        <p>Acquiring Research Technique : {{ recommenddata.acquiring_research_technique }}</p>
+
+        <p>Creative & Originality : {{ recommenddata.creative_and_originality }}</p>
+
+        <p>Linguistic Ikills : {{ recommenddata.linguistic_ikills }}</p>
+
+        <p>General Knowledge : {{ recommenddata.general_knowledge }}</p>
+
+        <p>Overall Evaluation : {{ recommenddata.overall_evaluation }}</p>
+
+        <p style="text-align: justify;">Note About The Applicant: {{ recommenddata.note_about_the_applicant }}</p>
+
+    </section>
+
+    <hr>
+
+    <section>
+        <h3 style="text-align: center;">Faculty Dean</h3>
+        <p>Name : {{ recommenddata.faculty_dean_name }}</p>
+        <p>Signature : {{ recommenddata.faculty_dean_signature }}</p>
+        <p>Date : {{ recommenddata.faculty_dean_date }}</p>
+    
+    </section>
+
+    <hr>
+    
+    <section>
+        <h3 style="text-align: center;">Recommender's</h3>
+        <p>Recommender's Name : {{ recommenddata.recommenders_name }}</p>
+        <p>Academic Position : {{ recommenddata.academic_position }}</p>
+        <p>Academic Department : {{ recommenddata.academic_department }}</p>
+    
+    </section>
+</body>
+
+</html>
