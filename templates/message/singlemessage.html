@@ -17,42 +17,41 @@
         </div>
         <div class="col-md-8 allusers1">
             {% for allmessage in alltextmessage %}
-            {% if allmessage.user1 == slug and allmessage.user == user.username %}
-            <div class="umessage">
-                {% if allmessage.user1 == slug and allmessage.message1 is not none %}
-                <p>{{ allmessage.message1 }}</p>
-                <p>send by: {{ allmessage.user1 }}</p>
-                <p>Date: {{ allmessage.current_date }}</p>
-                {%  endif %}
-            </div>
-            <div id="umessage1">
-                <div style="width: 300px;">
-                    {% if allmessage.user == user.username %}
-                    <p>{{ allmessage.message }}</p>
-                    <p>send by: {{ allmessage.user }}</p>
-                    <p>Date: {{ allmessage.current_date }}</p>
-                    {%  endif %}
-                </div>
-            </div>
-            {% elif allmessage.user1 == user.username and allmessage.user == slug %}
-            <div class="umessage">
-                {% if allmessage.user1 == user.username %}
-                <p>{{ allmessage.message }}</p>
-                <p>send by: {{ allmessage.user }}</p>
-                <p>Date: {{ allmessage.current_date }}</p>
-                {%  endif %}
-            </div>
-            <div id="umessage1">
-                <div style="width: 300px;">
-                    {% if allmessage.user == slug and allmessage.message1 is not none %}
-                    <p>{{ allmessage.message1 }}</p>
-                    <p>send by: {{ allmessage.user1 }}</p>
-                    <p>Date: {{ allmessage.current_date }}</p>
-                    {%  endif %}
-                </div>
-            </div>
-
-            {% endif %}
+                {% if allmessage.user1 == slug and allmessage.user == user.username %}
+                    <div class="umessage">
+                        {% if allmessage.user1 == slug and allmessage.message1 is not none %}
+                            <p>{{ allmessage.message1 }}</p>
+                            <p>send by: {{ allmessage.user1 }}</p>
+                            <p>Date: {{ allmessage.current_date }}</p>
+                        {%  endif %}
+                    </div>
+                    <div id="umessage1">
+                        <div style="width: 300px;">
+                            {% if allmessage.user == user.username %}
+                                <p>{{ allmessage.message }}</p>
+                                <p>send by: {{ allmessage.user }}</p>
+                                <p>Date: {{ allmessage.current_date }}</p>
+                            {%  endif %}
+                        </div>
+                    </div>
+                {% elif allmessage.user1 == user.username and allmessage.user == slug %}
+                    <div class="umessage">
+                        {% if allmessage.user1 == user.username %}
+                            <p>{{ allmessage.message }}</p>
+                            <p>send by: {{ allmessage.user }}</p>
+                            <p>Date: {{ allmessage.current_date }}</p>
+                        {%  endif %}
+                    </div>
+                    <div id="umessage1">
+                        <div style="width: 300px;">
+                            {% if allmessage.user == slug and allmessage.message1 is not none %}
+                                <p>{{ allmessage.message1 }}</p>
+                                <p>send by: {{ allmessage.user1 }}</p>
+                                <p>Date: {{ allmessage.current_date }}</p>
+                            {%  endif %}
+                        </div>
+                    </div>
+                {% endif %}
             {% endfor %}
             <form class="message" action="{% url 'message' %}{{slug}}" method="post">
                 {% csrf_token %}
